@@ -31,7 +31,8 @@ Les instructions sont disponibles sur : [Dockerhub Odoo](https://hub.docker.com/
 - Volumes : Les différents volume pour persister les données entre deux redémarrage d'un même conteneur
 - Secrets : Un volume particulier qui permet ici d'aller chercher un fichier et de le monter en lecture seule dans le conteneur
 
-> [!WARNING] Secrets ≠ chiffrement
+> [!WARNING]
+> Secrets ≠ chiffrement
 > Le fichier partagé par les conteneurs pour gérer le mdp d'accès à la BDD n'est pas chiffré.
 > Il faut bien faire attention à ne pas le versionner et dans un environnement de production à le protéger correctement.
 

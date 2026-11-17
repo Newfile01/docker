@@ -82,5 +82,9 @@ wjm088g7aeow   vote-stack_result.1   dockersamples/examplevotingapp_result:lates
 sfvcxugsnfuy   vote-stack_vote.1     dockersamples/examplevotingapp_vote:latest     node2     Running         Running about a minute ago             
 4if7w8mvxgr9   vote-stack_vote.2     dockersamples/examplevotingapp_vote:latest     node1     Running         Running about a minute ago             
 jr1hrzdowaw8   vote-stack_worker.1   dockersamples/examplevotingapp_worker:latest   node2     Running         Running about a minute ago             
-5asimrw8bzc8   vote-stack_worker.2   dockersamples/examplevotingapp_worker:latest   node1     Running         Running about a minute ago    
+5asimrw8bzc8   vote-stack_worker.2   dockersamples/examplevotingapp_worker:latest   node1     Running         Running about a minute ago 
+
+
+docker stack rm vote-stack
+# Bien attendre que docker swarm supprime toute la stack (peut prendre un peu de temps et être encore visible avec un docker ps)
 ```

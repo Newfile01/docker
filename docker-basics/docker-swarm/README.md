@@ -1,40 +1,57 @@
 # Docker Swarm
 
 > Solution d'orchestration de conteneur de Docker permettant de déployer et automatiser l'orchestration des conteneurs sur un cluster de machines
-> Principe : Déployer plusieurs machines hôtes, les ajouter au cluster et leur attribuer un rôle (Manager / Worker) puis déployer une stack de services conteneurisée
-> Docker Swarm se chargera de déployer et redéployer les conteneurs selon les paramètres entrés dans `stack.yml` (networks, volumes, constraints [affinités], ...)
+>
+> **Principe** : Déployer plusieurs machines hôtes, les ajouter au cluster et leur attribuer un rôle (**Manager** / **Worker**) puis déployer une stack de services conteneurisée
+>
+> **Docker Swarm** se chargera de déployer et redéployer les conteneurs selon les paramètres entrés dans `stack.yml` (networks, volumes, constraints [affinités], ...)
 
 ## TP - Déploiement application de vote avec Docker Swarm
 
-Contexte :
-→ Utilisation de la plateforme [dockerlabs](https://docker.labs.eazytraining.fr/)
-→ Repository de l'application : [Example-voting-app](https://github.com/dockersamples/example-voting-app)
-→ Déploiement d'un manager et un worker
-→ Clonage repo & deploiement voting-app
-→ Tests de fonctionnement
+_Contexte_ :  <br/>
+→ Utilisation de la plateforme [dockerlabs](https://docker.labs.eazytraining.fr/)  <br/>
+→ Repository de l'application : [Example-voting-app](https://github.com/dockersamples/example-voting-app)  <br/>
+→ Déploiement d'un manager et un worker  <br/>
+→ Clonage repo & deploiement voting-app  <br/>
+→ Tests de fonctionnement  <br/>
 
 ### Déploiement `voting-app`
 
-1 - **Initialiser un master**
+1 - **Initialiser un master**  
+```bash
 docker swarm init --advertise-addr 10.0.71.4
+```
 
-2 - **Enregistrer la commande de jonction avec token**
+2 - **Enregistrer la commande de jonction avec token**  
+```bash
 docker swarm join --token SWMTKN-1-6cqqcwlbecynmyydm3761mqju6vod1ere1xyxm6bkrwm0ykeut-22bs6mrpxnoxtfih3p31l6mbq 10.0.71.4:2377
+```
 
-3 - **Vérifier les noeuds du cluster**
+3 - **Vérifier les noeuds du cluster**  
+```bash
 docker node ls
+```
 
-3 - **Cloner repo**
+4 - **Cloner repo**  
+```bash
+git clone https://github.com/dockersamples/example-voting-app.git
+```
 
-4 - **Déployer la stack**
+5 - **Déployer la stack**  
+```bash
 docker stack deploy --compose-file docker-stack.yml vote-stack
-OU
+```
+OU  
+```bash
 docker stack deploy -c docker-stack.yml vote-stack
+```
 
-5 - Vérifier le déploiement
+6 - **Vérifier le déploiement** 
+```bash
 docker node ls
 docker stack ls
 docker stack ps vote-stack
+```
 
 ### Résultats
 
